@@ -1,0 +1,45 @@
+
+/*1)Find the producer names along with the count of movies they have produced that won an award?*/
+Select m.producer,count(a.movie_title) as Total_award from 
+movies m inner join winners a On 
+m.title = a.movie_titleS
+group by m.producer;
+
+/*2)Find the names of all movies along with the count of nominations they received and arrange in descending order?*/
+select movie_title, count(nominee_name) as Total_nominations
+from nominees
+group by movie_title
+order by Total_nominations desc;
+
+/*3)Find the names of all producers who have produced movies that were both nominated and won an award?*/
+select film.producer from movies film
+inner join nominees nom
+on film.title = nom.movie_title
+inner join winners a
+on nom.movie_title = a.movie_title
+group by producer;
+
+/*4)Which category Cillian Murphy and Robert Downey Jr. won the award ?*/
+select Category , winner_name from winners
+where winner_name in ('Cillian Murphy', 'Robert Downey Jr.');
+
+/*5)Retrieve the count of winners for each category from the Winners table?*/
+select category, count(winner_name) as Total_Winners from winners
+group by category;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
